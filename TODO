@@ -1,0 +1,7 @@
+okay so we need to see what kind of n values for fibonacci recursive and
+fibonacci direct need doing. Can we do 1500 with fibonacci direct? We should
+find out
+
+we need to graph the time comparison for each of these things, and put them in
+a chart, and then do a write up of the performance of one vs the other in
+emperical and mathematical complexity

@@ -50,7 +50,7 @@ def fibonacci_memo(n):
     if n <= 1:
         return n
     else:
-        return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
+        return fibonacci_memo(n-1) + fibonacci_memo(n-2)
 
 
 #Analysis
