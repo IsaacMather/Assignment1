@@ -5,3 +5,18 @@ find out
 we need to graph the time comparison for each of these things, and put them in
 a chart, and then do a write up of the performance of one vs the other in
 emperical and mathematical complexity
+
+
+one other thing to be cautious of... timeit will not reset the lru_cache for
+each run. For memo, you may want to create a wrapper function that resets the
+cache and then calls the fibonacci_memo functon
+
+if you saw seeing that the function scales linaraly, that *factor* increase
+should be some what constant for each function, with some bumps where you mihgt
+ hit some resource issues.
+
+ Comparing functions, however, ou should not see the same factor increae. You
+ should find that one scales well, one does not, and a third requires a little
+ thought
+
+ import
