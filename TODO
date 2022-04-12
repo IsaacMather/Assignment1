@@ -1,3 +1,12 @@
+first algo you can count loops, second, use an argument similar to towers of
+hanoi, third is a bit tricky!
+
+
+so need to update the argument for the second one to towers of hanoi, and
+update the final argument to make sure i have the right mathematical complexity
+
+
+
 okay so we need to see what kind of n values for fibonacci recursive and
 fibonacci direct need doing. Can we do 1500 with fibonacci direct? We should
 find out
@@ -6,6 +15,8 @@ we need to graph the time comparison for each of these things, and put them in
 a chart, and then do a write up of the performance of one vs the other in
 emperical and mathematical complexity
 
+
+#so oddly enough i redid the program
 
 one other thing to be cautious of... timeit will not reset the lru_cache for
 each run. For memo, you may want to create a wrapper function that resets the

@@ -35,6 +35,10 @@ def fibonacci_recursive(n):
         return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
 
 
+def fib_memo_caller(n):
+    fibonacci_memo.cache_clear()
+    fibonacci_memo(n)
+
 @functools.lru_cache()
 def fibonacci_memo(n):
     if n <= 1:
@@ -68,7 +72,7 @@ def super_timer(sizes: int, function_to_call):
     print("---------------------")
     for size in my_range(5, sizes):
         #should i reset the cache here?
-        fibonacci_memo.cache_clear()
+
         total_time = timeit.timeit(
                                    f"{function_to_call}({size})",
                                    setup=f"from __main__ import {function_to_call}",
@@ -85,57 +89,59 @@ def super_timer(sizes: int, function_to_call):
 if __name__ == '__main__':
     dir_size_list, dir_time_list = super_timer(1000000, 'fibonacci_direct')
     recur_size_list, recur_time_list = super_timer(40, 'fibonacci_recursive')
-    memo_size_list, memo_time_list = super_timer(11000, 'fibonacci_memo')
+    memo_size_list, memo_time_list = super_timer(11000, 'fib_memo_caller')
 
     graph_maker(dir_size_list, dir_time_list, 'fibonacci_direct')
     graph_maker(recur_size_list, recur_time_list, 'fibonacci_recursive')
     graph_maker(memo_size_list, memo_time_list, 'fibonacci_memo')
 
-
-
-#output
+#
+# #/Users/isaacmather/PycharmProjects/Assignment1/venv/bin/python /Users/isaacmather/PycharmProjects/Assignment1/main.py
 # {'fibonacci_direct'}
 # Size     Average Time
 # ---------------------
-# Size       Average Time
-# 5         0.0000009652
-# 10         0.0000010484
-# 20         0.0000019144
-# 40         0.0000036202
-# 80         0.0000073354
-# 160         0.0000151100
-# 320         0.0000393576
-# 640         0.0001155316
-# 1280         0.0004850168
-# 2560         0.0005233208
-# 5120         0.0010921882
-# 10240         0.0038937558
-# 20480         0.0086921520
-# 40960         0.0259926444
-# 81920         0.0899243990
-# 163840         0.3292538178
-# 327680         1.2725213328
-# 655360         5.0695950332
+# 5         0.0000009486
+# 10        0.0000010340
+# 20        0.0000018714
+# 40        0.0000035356
+# 80        0.0000115860
+# 160        0.0000333414
+# 320        0.0000475246
+# 640        0.0001124588
+# 1280        0.0002483400
+# 2560        0.0003581610
+# 5120        0.0008619278
+# 10240        0.0034258786
+# 20480        0.0092464182
+# 40960        0.0257886840
+# 81920        0.0992320660
+# 163840        0.3351890942
+# 327680        1.2552827814
+# 655360        5.0992263736
 # {'fibonacci_recursive'}
 # Size     Average Time
 # ---------------------
-# 5         0.0000025132
-# 10         0.0000236836
-# 20         0.0026550916
-# 40         42.0832498160
-# {'fibonacci_memo'}
+# 5         0.0000025678
+# 10        0.0000237118
+# 20        0.0026972596
+# 40        40.5266326946
+# {'fib_memo_caller'}
 # Size     Average Time
 # ---------------------
-# 5         0.0000010760
-# 10        0.0000014248
-# 20        0.0000024240
-# 40        0.0000046146
-# 80        0.0000090918
-# 160        0.0000228566
-# 320        0.0000496248
-# 640        0.0001034370
-# 1280        0.0002051328
-# 2560        0.0004361558
-# 5120        0.0009554204
-# 10240        0.0022977032
-
+# 5         0.0000032634
+# 10        0.0000050674
+# 20        0.0000097970
+# 40        0.0000193886
+# 80        0.0000371864
+# 160        0.0000780456
+# 320        0.0001637926
+# 640        0.0003546272
+# 1280        0.0007634582
+# 2560        0.0016263462
+# 5120        0.0039538970
+# 10240        0.0097502078
+# No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+# No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+# No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+#
+# Process finished with exit code 0
